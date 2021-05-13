@@ -1,0 +1,14 @@
+0.7
+2020.2
+Nov 18 2020
+09:47:47
+C:/Users/juanp/Documents/USM/2021-1/ELO212 Lab.Digitales/Proyectos/sesion_2/sesion_2.sim/sim_1/behav/xsim/glbl.v,1605673889,verilog,,,,glbl,,uvm,,,,,,
+C:/Users/juanp/Documents/USM/2021-1/ELO212 Lab.Digitales/Proyectos/sesion_2/sesion_2.srcs/sim_1/new/counter_fib_seven_test.sv,1620410598,systemVerilog,,,,counter_fib_seven_test,,uvm,,,,,,
+C:/Users/juanp/Documents/USM/2021-1/ELO212 Lab.Digitales/Proyectos/sesion_2/sesion_2.srcs/sim_1/new/counter_test.sv,1620410786,systemVerilog,,,,counter_test,,uvm,,,,,,
+C:/Users/juanp/Documents/USM/2021-1/ELO212 Lab.Digitales/Proyectos/sesion_2/sesion_2.srcs/sim_1/new/sevenSeg_test.sv,1619806376,systemVerilog,,,,sevenSeg_test,,uvm,,,,,,
+C:/Users/juanp/Documents/USM/2021-1/ELO212 Lab.Digitales/Proyectos/sesion_2/sesion_2.srcs/sources_1/new/BCD_to_sevenSeg.sv,1619806783,systemVerilog,,C:/Users/juanp/Documents/USM/2021-1/ELO212 Lab.Digitales/Proyectos/sesion_2/sesion_2.srcs/sources_1/new/counter_fourbit.sv,,BCD_to_sevenSeg,,uvm,,,,,,
+C:/Users/juanp/Documents/USM/2021-1/ELO212 Lab.Digitales/Proyectos/sesion_2/sesion_2.srcs/sources_1/new/counter_fourbit.sv,1619816130,systemVerilog,,C:/Users/juanp/Documents/USM/2021-1/ELO212 Lab.Digitales/Proyectos/sesion_2/sesion_2.srcs/sources_1/new/fib_rec.sv,,counter_4bit,,uvm,,,,,,
+C:/Users/juanp/Documents/USM/2021-1/ELO212 Lab.Digitales/Proyectos/sesion_2/sesion_2.srcs/sources_1/new/counter_nbit.sv,1620165010,systemVerilog,,C:/Users/juanp/Documents/USM/2021-1/ELO212 Lab.Digitales/Proyectos/sesion_2/sesion_2.srcs/sources_1/new/top_module2.sv,,counter_nbit,,uvm,,,,,,
+C:/Users/juanp/Documents/USM/2021-1/ELO212 Lab.Digitales/Proyectos/sesion_2/sesion_2.srcs/sources_1/new/fib_rec.sv,1619816329,systemVerilog,,C:/Users/juanp/Documents/USM/2021-1/ELO212 Lab.Digitales/Proyectos/sesion_2/sesion_2.srcs/sources_1/new/top_module.sv,,fib_rec,,uvm,,,,,,
+C:/Users/juanp/Documents/USM/2021-1/ELO212 Lab.Digitales/Proyectos/sesion_2/sesion_2.srcs/sources_1/new/top_module.sv,1620410212,systemVerilog,,C:/Users/juanp/Documents/USM/2021-1/ELO212 Lab.Digitales/Proyectos/sesion_2/sesion_2.srcs/sim_1/new/counter_fib_seven_test.sv,,top_module,,uvm,,,,,,
+C:/Users/juanp/Documents/USM/2021-1/ELO212 Lab.Digitales/Proyectos/sesion_2/sesion_2.srcs/sources_1/new/top_module2.sv,1620166159,systemVerilog,,C:/Users/juanp/Documents/USM/2021-1/ELO212 Lab.Digitales/Proyectos/sesion_2/sesion_2.srcs/sim_1/new/counter_test.sv,,top_module2,,uvm,,,,,,
