@@ -7,14 +7,13 @@
 // 
 //////////////////////////////////////////////////////////////////////////////////
 
-module S4_actividad2(
-    // CONSULTAR SI EL TOP MODULE DEBE SER PARAMETRIZADO TMB O NO
-	input logic clock, reset, load, dec, enable,
-	input logic [7:0] load_value,
-	output logic [7:0] counterN
+module S4_actividad2 #(parameter N = 4)(
+    input logic clock, reset, load, dec, enable,
+	input logic [N-1:0] load_value,
+	output logic [N-1:0] counterN
     );
     
-    counter_nbit #(.N(8)) DUT(
+    counter_nbit #(.N(N)) DUT(
         .clock(clock),
         .reset(reset),
         .load(load),
