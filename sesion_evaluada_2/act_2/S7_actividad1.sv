@@ -53,7 +53,8 @@ module S7_actividad2 #(parameter N_DEBOUNCER = 10)(
     logic toalu_loadopB;
     logic toalu_loadopOp;
 
-    logic toDisplaySel;
+    // Selector to mux
+    logic toDisplaySelMux;
     
     // Enter the clean input to the pollish
     // updateRes must go to the ALU result register
@@ -69,7 +70,7 @@ module S7_actividad2 #(parameter N_DEBOUNCER = 10)(
         .out_LoadOpCode(toalu_loadopOp),
 
         .out_Status(Status),
-        .out_ToDisplaySel(toDisplaySel),
+        .out_ToDisplaySel(toDisplaySelMux),
         .out_updateRes(afteralu_updateRes)
     );
 
@@ -138,6 +139,12 @@ module S7_actividad2 #(parameter N_DEBOUNCER = 10)(
     );
 
 
+    mux #(.width(width)) mux_todisplay (
+        .A(to_displaySelector),
+        .B(DataIn),
+        .out(ToDisplay),
+        .sel(toDisplaySelMux)
+    );
 
 
 endmodule

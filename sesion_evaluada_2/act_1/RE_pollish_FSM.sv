@@ -64,7 +64,7 @@ always_comb begin
         end
         Show_Result:
         begin
-            next_state = Entering_OpA;
+            if (DataDebouncedIn) next_state = Entering_OpA;
         end
 //        default: 
 //        begin

@@ -16,12 +16,13 @@ module S7_actividad1 #(parameter N_DEBOUNCER = 10)(
 	logic PB_pressed_pulse;    // high if button is pressed
 	logic PB_released_pulse;    // clean and synchronized pulse for button released
 
+    assign resetN_neg = ~resetN;
     localparam width = 16;
 
     // Debounce the resetN input
     debouncer_FSM #(.DELAY(1)) dummy_debouncer (
         .clk(clk),
-        .rst(resetN),
+        .rst(resetN_neg),
         .PB(Enter),
         .PB_pressed_status(PB_pressed_status),
         .PB_pressed_pulse(PB_pressed_pulse),
@@ -33,22 +34,22 @@ module S7_actividad1 #(parameter N_DEBOUNCER = 10)(
     logic toalu_loadopB;
     logic toalu_loadopOp;
 
-    logic toDisplaySel;
+    logic toDisplaySelMux;
     
     // Enter the clean input to the pollish
     // updateRes must go to the ALU result register
     // ToDisplaySel to the display selector
     // Status to the status output 
     RE_pollish_FSM #(.WIDTH(width)) dummy_pollish_fsm (
-        .DataDebouncedIn(PB_pressed_status),
+        .DataDebouncedIn(PB_pressed_pulse),
         .clk(clk),
-        .reset(resetN),
+        .reset(resetN_neg),
         .out_LoadOpA(toalu_loadopA),
         .out_LoadOpB(toalu_loadopB),
         .out_LoadOpCode(toalu_loadopOp),
 
         .out_Status(Status),
-        .out_ToDisplaySel(toDisplaySel),
+        .out_ToDisplaySel(toDisplaySelMux),
         .out_updateRes(afteralu_updateRes)
     );
 
@@ -60,7 +61,7 @@ module S7_actividad1 #(parameter N_DEBOUNCER = 10)(
     logic [1:0] out_reg_Op;
     registro #(.N(width)) reg_A (
         .clk(clk),
-        .reset(resetN),
+        .reset(resetN_neg),
         .load(toalu_loadopA),
         .In(DataIn),
         .Out(out_reg_A)
@@ -68,7 +69,7 @@ module S7_actividad1 #(parameter N_DEBOUNCER = 10)(
 
     registro #(.N(width)) reg_B (
         .clk(clk),
-        .reset(resetN),
+        .reset(resetN_neg),
         .load(toalu_loadopB),
         .In(DataIn),
         .Out(out_reg_B)
@@ -76,7 +77,7 @@ module S7_actividad1 #(parameter N_DEBOUNCER = 10)(
 
     registro #(.N(2)) reg_Op (
         .clk(clk),
-        .reset(resetN),
+        .reset(resetN_neg),
         .load(toalu_loadopOp),
         .In(DataIn),
         .Out(out_reg_Op)
@@ -101,7 +102,7 @@ module S7_actividad1 #(parameter N_DEBOUNCER = 10)(
 
     registro #(.N(width)) reg_result (
         .clk(clk),
-        .reset(resetN),
+        .reset(resetN_neg),
         .load(afteralu_updateRes),
         .In(alu_result),
         .Out(to_displaySelector)
@@ -110,14 +111,19 @@ module S7_actividad1 #(parameter N_DEBOUNCER = 10)(
     
     registro #(.N(4)) reg_flags (
         .clk(clk),
-        .reset(resetN),
+        .reset(resetN_neg),
         .load(afteralu_updateRes),
         .In(alu_flags),
         .Out(Flags)
     );
 
 
-
+    mux #(.width(width)) mux_todisplay (
+        .A(to_displaySelector),
+        .B(DataIn),
+        .out(ToDisplay),
+        .sel(toDisplaySelMux)
+    );
 
 endmodule
 

@@ -70,7 +70,8 @@ always_comb begin
         end
         Show_Result:
         begin
-            next_state = Entering_OpA;
+            if (UndoDebouncedIn) next_state = Entering_OpCode;
+            else if (DataDebouncedIn) next_state = Entering_OpA;
         end
 //        default: 
 //        begin
