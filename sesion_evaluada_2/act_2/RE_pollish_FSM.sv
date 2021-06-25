@@ -5,6 +5,7 @@ module RE_pollish_FSM #(parameter WIDTH = 16)(
     input logic     clk,
     input logic     reset,
     input logic     DataDebouncedIn,
+    input logic     UndoDebouncedIn,
 
     output logic    out_LoadOpA,
     output logic    out_LoadOpB,
@@ -44,22 +45,27 @@ always_comb begin
         end 
         Load_OpA:
         begin
+            if (UndoDebouncedIn) next_state = Entering_OpA;
             next_state = Entering_OpB;
         end
         Entering_OpB:
         begin
-            if (DataDebouncedIn) next_state = Load_OpB;
+            if (UndoDebouncedIn) next_state = Entering_OpA;
+            else if (DataDebouncedIn) next_state = Load_OpB;
         end
         Load_OpB:
         begin
+            if (UndoDebouncedIn) next_state = Entering_OpA;
             next_state = Entering_OpCode;
         end
         Entering_OpCode:
         begin
-            if(DataDebouncedIn) next_state = Load_OpCode;
+            if  (UndoDebouncedIn) next_state = Entering_OpB;
+            else if  (DataDebouncedIn) next_state = Load_OpCode;
         end
         Load_OpCode:
         begin
+            if (UndoDebouncedIn) next_state = Entering_OpB;
             next_state = Show_Result;
         end
         Show_Result:
